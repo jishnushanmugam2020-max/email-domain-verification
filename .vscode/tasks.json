@@ -1,0 +1,48 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Start Frontend (Vite)",
+			"type": "shell",
+			"command": "npm",
+			"args": [
+				"--prefix",
+				"project\\email-domain-verification\\client--",
+				"run",
+				"dev",
+				"--",
+				"--host",
+				"127.0.0.1"
+			],
+			"isBackground": true,
+			"problemMatcher": []
+		},
+		{
+			"label": "Start Frontend (npm.cmd)",
+			"type": "shell",
+			"command": "npm.cmd",
+			"args": [
+				"--prefix",
+				"project\\email-domain-verification\\client--",
+				"run",
+				"dev",
+				"--",
+				"--host",
+				"127.0.0.1"
+			],
+			"isBackground": true,
+			"problemMatcher": []
+		},
+		{
+			"label": "Start Backend API",
+			"type": "shell",
+			"command": "cmd.exe",
+			"args": [
+				"/c",
+				"cd /d project\\email-domain-verification\\server && node server.js"
+			],
+			"isBackground": true,
+			"problemMatcher": []
+		}
+	]
+}

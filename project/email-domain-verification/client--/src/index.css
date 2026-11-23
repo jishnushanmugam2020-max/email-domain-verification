@@ -1,0 +1,728 @@
+
+/* ==========================================
+   ⚡ ULTRA NEON UI — RESET
+========================================== */
+:root {
+    --text: #e5e7eb;
+    --text-h: #ffffff;
+    --bg: #080612;
+    --border: #292044;
+    --code-bg: #1b1235;
+
+    --accent: #a855f7;
+    --accent-bg: rgba(168, 85, 247, 0.15);
+    --accent-border: rgba(192, 132, 255, 0.7);
+
+    --social-bg: rgba(255, 255, 255, 0.05);
+
+    --shadow:
+        0 0 25px rgba(139, 92, 246, 0.25),
+        0 10px 40px rgba(0, 0, 0, 0.5);
+
+    --sans: 'Segoe UI', Arial, sans-serif;
+    --heading: 'Segoe UI', Arial, sans-serif;
+    --mono: Consolas, monospace;
+
+    font: 16px/1.7 var(--sans);
+    letter-spacing: 0.3px;
+    color: var(--text);
+    color-scheme: dark;
+
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* ==========================================
+   RESET
+========================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ==========================================
+   BODY — ANIMATED AURORA
+========================================== */
+body {
+    font-family: var(--sans);
+    color: var(--text);
+
+    background:
+        radial-gradient(ellipse at 15% 20%, rgba(103, 0, 255, 0.28), transparent 45%),
+        radial-gradient(ellipse at 85% 80%, rgba(255, 0, 128, 0.20), transparent 45%),
+        linear-gradient(
+            -45deg,
+            #05030b,
+            #12072a,
+            #090f2c,
+            #22082f,
+            #070514
+        );
+
+    background-size: 200% 200%, 200% 200%, 400% 400%;
+    animation: auroraFlow 16s ease infinite;
+
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+}
+
+@keyframes auroraFlow {
+    0% {
+        background-position: 0% 0%, 100% 100%, 0% 50%;
+    }
+    50% {
+        background-position: 100% 100%, 0% 0%, 100% 50%;
+    }
+    100% {
+        background-position: 0% 0%, 100% 100%, 0% 50%;
+    }
+}
+
+/* ==========================================
+   AMBIENT LIGHTS
+========================================== */
+body::before,
+body::after {
+    content: "";
+    position: fixed;
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+    filter: blur(110px);
+    opacity: 0.5;
+    pointer-events: none;
+    z-index: 0;
+}
+
+body::before {
+    background: #7c3aed;
+    top: -150px;
+    left: -150px;
+    animation: orbOne 12s ease-in-out infinite alternate;
+}
+
+body::after {
+    background: #ec008c;
+    bottom: -150px;
+    right: -150px;
+    animation: orbTwo 15s ease-in-out infinite alternate;
+}
+
+@keyframes orbOne {
+    0% {
+        transform: translate(0, 0) scale(1);
+    }
+    100% {
+        transform: translate(250px, 220px) scale(1.3);
+    }
+}
+
+@keyframes orbTwo {
+    0% {
+        transform: translate(0, 0) scale(1);
+    }
+    100% {
+        transform: translate(-240px, -180px) scale(1.35);
+    }
+}
+
+/* ==========================================
+   ROOT
+========================================== */
+#root {
+    width: 100%;
+    max-width: 100%;
+    min-height: 100vh;
+    margin: 0 auto;
+
+    display: flex;
+    flex-direction: column;
+
+    box-sizing: border-box;
+    position: relative;
+    z-index: 1;
+}
+
+/* ==========================================
+   HEADINGS
+========================================== */
+h1,
+h2,
+h3 {
+    font-family: var(--heading);
+    font-weight: 800;
+    color: var(--text-h);
+}
+
+/* ==========================================
+   MAIN TITLE — NEON TEXT
+========================================== */
+h1 {
+    font-size: 40px;
+    line-height: 1.25;
+    margin: 0 0 18px;
+
+    letter-spacing: -1px;
+
+    background: linear-gradient(
+        90deg,
+        #ffffff,
+        #67e8f9,
+        #c084fc,
+        #ff72c6,
+        #ffffff
+    );
+
+    background-size: 300% auto;
+    animation: neonTitle 5s linear infinite;
+
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+
+    filter: drop-shadow(0 0 12px rgba(168, 85, 247, 0.25));
+}
+
+@keyframes neonTitle {
+    0% {
+        background-position: 0% center;
+    }
+    100% {
+        background-position: 300% center;
+    }
+}
+
+/* ==========================================
+   SECTION TITLES
+========================================== */
+h2 {
+    font-size: 24px;
+    line-height: 1.4;
+    margin: 35px 0 20px;
+    padding-bottom: 12px;
+
+    text-align: left;
+    color: #e9d5ff;
+
+    border-bottom: 2px solid transparent;
+    border-image: linear-gradient(
+        90deg,
+        #00e5ff,
+        #8b5cf6,
+        #ff00c8
+    ) 1;
+
+    text-shadow: 0 0 12px rgba(168, 85, 247, 0.25);
+}
+
+/* ==========================================
+   RESULT / MESSAGE
+========================================== */
+h3 {
+    margin-top: 25px;
+    margin-bottom: 20px;
+    padding: 18px;
+
+    border-radius: 14px;
+    font-size: 17px;
+
+    color: #ffffff;
+
+    background:
+        linear-gradient(135deg, #1b1040, #30103d, #142d4a);
+
+    border: 1px solid #a855f7;
+
+    box-shadow:
+        0 0 18px rgba(168, 85, 247, 0.15),
+        inset 0 0 20px rgba(139, 92, 246, 0.08);
+
+    overflow-wrap: anywhere;
+
+    animation: messagePulse 4s ease-in-out infinite;
+}
+
+@keyframes messagePulse {
+    0%, 100% {
+        box-shadow: 0 0 15px rgba(168, 85, 247, 0.15);
+    }
+    50% {
+        box-shadow:
+            0 0 25px rgba(168, 85, 247, 0.3),
+            0 0 40px rgba(0, 229, 255, 0.08);
+    }
+}
+
+/* ==========================================
+   PARAGRAPH
+========================================== */
+p {
+    margin: 0;
+    color: #d1d5db;
+}
+
+/* ==========================================
+   SUBTITLE
+========================================== */
+.subtitle {
+    color: #c4b5fd;
+    font-size: 15px;
+    line-height: 1.8;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+/* ==========================================
+   INPUTS — NEON FOCUS
+========================================== */
+input {
+    width: 100%;
+    padding: 16px;
+    margin-bottom: 17px;
+
+    border: 2px solid #38275f;
+    border-radius: 13px;
+
+    font-size: 16px;
+    font-family: var(--sans);
+
+    background: #100c20;
+    color: #ffffff;
+
+    outline: none;
+
+    transition: all 0.35s ease;
+
+    box-shadow: inset 0 0 12px rgba(139, 92, 246, 0.05);
+}
+
+input::placeholder {
+    color: #a5a0ba;
+    transition: 0.3s ease;
+}
+
+input:hover {
+    border-color: #7046c5;
+    background: #17102c;
+}
+
+input:focus {
+    border-color: #00e5ff;
+    background: #151027;
+
+    box-shadow:
+        0 0 0 4px rgba(0, 229, 255, 0.12),
+        0 0 22px rgba(0, 229, 255, 0.2),
+        inset 0 0 12px rgba(0, 229, 255, 0.05);
+
+    transform: translateY(-2px);
+}
+
+input:focus::placeholder {
+    color: #67e8f9;
+    transform: translateX(5px);
+}
+
+/* ==========================================
+   BUTTONS — NEON GRADIENT
+========================================== */
+button {
+    width: 100%;
+    padding: 16px;
+
+    background: linear-gradient(
+        110deg,
+        #6d28d9,
+        #9333ea,
+        #db2777,
+        #6d28d9
+    );
+
+    background-size: 300% 100%;
+
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 13px;
+
+    font-size: 16px;
+    font-weight: 800;
+    font-family: var(--sans);
+
+    cursor: pointer;
+    margin-bottom: 13px;
+
+    box-shadow:
+        0 5px 20px rgba(147, 51, 234, 0.3),
+        0 0 10px rgba(219, 39, 119, 0.1);
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.3s ease,
+        filter 0.3s ease;
+
+    animation: buttonColorFlow 7s linear infinite;
+
+    position: relative;
+    overflow: hidden;
+}
+
+/* Button light sweep */
+button::before {
+    content: "";
+    position: absolute;
+
+    top: 0;
+    left: -120%;
+
+    width: 100%;
+    height: 100%;
+
+    background: linear-gradient(
+        110deg,
+        transparent,
+        rgba(255, 255, 255, 0.35),
+        transparent
+    );
+
+    transition: left 0.6s ease;
+}
+
+button:hover::before {
+    left: 120%;
+}
+
+@keyframes buttonColorFlow {
+    0% {
+        background-position: 0% 50%;
+    }
+    100% {
+        background-position: 300% 50%;
+    }
+}
+
+button:hover {
+    transform: translateY(-4px) scale(1.02);
+
+    box-shadow:
+        0 10px 30px rgba(147, 51, 234, 0.45),
+        0 0 25px rgba(0, 229, 255, 0.15);
+
+    filter: brightness(1.2);
+}
+
+button:active {
+    transform: scale(0.96);
+}
+
+/* Keyboard accessibility */
+button:focus-visible {
+    outline: 3px solid #67e8f9;
+    outline-offset: 4px;
+}
+
+/* ==========================================
+   CODE & COUNTER
+========================================== */
+code,
+.counter {
+    font-family: var(--mono);
+    display: inline-flex;
+    border-radius: 7px;
+    color: #67e8f9;
+}
+
+code {
+    font-size: 15px;
+    line-height: 135%;
+    padding: 6px 10px;
+
+    background: #170f2b;
+    border: 1px solid #6934a6;
+
+    box-shadow: 0 0 12px rgba(139, 92, 246, 0.1);
+}
+
+/* ==========================================
+   TABLE — DARK FUTURE
+========================================== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 25px;
+
+    background: #100c20;
+    border-radius: 14px;
+    overflow: hidden;
+
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.35),
+        0 0 20px rgba(139, 92, 246, 0.1);
+}
+
+/* TABLE CELLS */
+th,
+td {
+    border: 1px solid #33254f;
+    padding: 15px 11px;
+
+    text-align: center;
+    overflow-wrap: anywhere;
+
+    font-size: 14px;
+    color: #e5e7eb;
+
+    transition:
+        background 0.25s ease,
+        color 0.25s ease;
+}
+
+/* TABLE HEADER */
+th {
+    background: linear-gradient(
+        110deg,
+        #4c1d95,
+        #7e22ce,
+        #be185d,
+        #4c1d95
+    );
+
+    background-size: 250% 100%;
+    animation: headerFlow 8s linear infinite;
+
+    color: #ffffff;
+    font-weight: 800;
+    padding: 17px 10px;
+
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.25);
+}
+
+@keyframes headerFlow {
+    0% {
+        background-position: 0% 50%;
+    }
+    100% {
+        background-position: 250% 50%;
+    }
+}
+
+/* ALTERNATE ROWS */
+tr:nth-child(even) {
+    background-color: #17112a;
+}
+
+tr:nth-child(odd) {
+    background-color: #0f0b1d;
+}
+
+/* TABLE HOVER */
+tbody tr {
+    transition: background 0.25s ease;
+}
+
+tbody tr:hover {
+    background-color: #282044;
+}
+
+tbody tr:hover td {
+    color: #67e8f9;
+    border-color: #6545a5;
+}
+
+/* ==========================================
+   DELETE BUTTON
+========================================== */
+.delete-btn {
+    width: auto;
+    padding: 9px 16px;
+
+    background: linear-gradient(
+        135deg,
+        #ef4444,
+        #be123c
+    );
+
+    background-size: 100% 100%;
+
+    color: white;
+    font-size: 13px;
+    font-weight: bold;
+
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 8px;
+
+    margin: 0;
+
+    box-shadow: 0 4px 15px rgba(239, 68, 68, 0.25);
+
+    animation: none;
+}
+
+.delete-btn::before {
+    display: none;
+}
+
+.delete-btn:hover {
+    background: linear-gradient(
+        135deg,
+        #ff5252,
+        #e11d48
+    );
+
+    transform: translateY(-2px);
+
+    box-shadow: 0 7px 20px rgba(239, 68, 68, 0.4);
+}
+
+/* ==========================================
+   CLEAR BUTTON
+========================================== */
+.clear-btn {
+    background: linear-gradient(
+        135deg,
+        #e11d48,
+        #be123c,
+        #9f1239
+    );
+
+    margin-top: 15px;
+}
+
+.clear-btn:hover {
+    box-shadow:
+        0 10px 30px rgba(225, 29, 72, 0.35),
+        0 0 20px rgba(255, 0, 80, 0.12);
+}
+
+/* ==========================================
+   SELECTION COLOR
+========================================== */
+::selection {
+    background: #a855f7;
+    color: white;
+}
+
+/* ==========================================
+   SCROLLBAR
+========================================== */
+::-webkit-scrollbar {
+    width: 9px;
+    height: 9px;
+}
+
+::-webkit-scrollbar-track {
+    background: #0b0716;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(
+        #8b5cf6,
+        #ec4899,
+        #06b6d4
+    );
+    border-radius: 20px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #c084fc;
+}
+
+/* ==========================================
+   TABLE RESPONSIVE WRAPPER
+========================================== */
+.table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    border-radius: 14px;
+}
+
+/* ==========================================
+   TABLET
+========================================== */
+@media (max-width: 1024px) {
+    :root {
+        font-size: 16px;
+    }
+
+    h1 {
+        font-size: 34px;
+    }
+
+    h2 {
+        font-size: 22px;
+    }
+}
+
+/* ==========================================
+   MOBILE
+========================================== */
+@media (max-width: 600px) {
+    body {
+        padding: 8px;
+    }
+
+    body::before,
+    body::after {
+        width: 240px;
+        height: 240px;
+        filter: blur(80px);
+    }
+
+    h1 {
+        font-size: 27px;
+    }
+
+    h2 {
+        font-size: 19px;
+    }
+
+    input {
+        font-size: 14px;
+        padding: 14px;
+    }
+
+    button {
+        font-size: 14px;
+        padding: 14px;
+    }
+
+    table {
+        font-size: 12px;
+    }
+
+    th,
+    td {
+        padding: 10px 6px;
+        font-size: 12px;
+    }
+
+    .subtitle {
+        font-size: 13px;
+    }
+
+    h3 {
+        font-size: 14px;
+        padding: 13px;
+    }
+
+    .delete-btn {
+        padding: 8px 10px;
+        font-size: 11px;
+    }
+}
+
+/* ==========================================
+   REDUCED MOTION ACCESSIBILITY
+========================================== */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
+    }
+}
